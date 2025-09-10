@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karan Model - 18+ Booking</title>
+<style>
+  body {
+    margin: 0; padding: 0; background: black; color: orange; font-family: Arial, sans-serif;
+  }
+  .age-check {
+    position: fixed; top:0; left:0; width: 100%; height: 100vh;
+    background: black; color: orange;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 1000;
+  }
+  .hidden { display: none; }
+  header {
+    text-align: center; padding: 20px; border-bottom: 2px solid orange;
+  }
+  header h1 {
+    margin: 0; font-size: 2rem; letter-spacing: 2px;
+  }
+  .model-info {
+    max-width: 800px; margin: 30px auto; background: #1c1c1c; border-radius: 10px; padding: 15px;
+  }
+  .model-photos {
+    display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;
+  }
+  .model-photos img {
+    border-radius: 10px; max-height: 180px; cursor: pointer;
+    border: 2px solid orange; transition: transform 0.3s ease;
+  }
+  .model-photos img:hover {
+    transform: scale(1.05);
+  }
+  .comments {
+    margin-top: 20px; font-size: 1rem; line-height: 1.5;
+  }
+  .booking-section {
+    max-width: 800px; margin: 30px auto;
+    background: #222; border-radius: 10px; padding: 20px;
+  }
+  .booking-section h2 {
+    margin-top: 0; border-bottom: 2px solid orange; padding-bottom: 5px;
+  }
+  label, select, button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 1.1rem;
+  }
+  select, button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  select {
+    background: black; color: orange;
+    border: 1px solid orange;
+  }
+  button {
+    background: orange; color: black; font-weight: bold; cursor: pointer;
+    margin-top: 20px;
+  }
+  button:hover {
+    background: darkorange;
+  }
+</style>
+</head>
+<body>
+
+<div id="ageCheck" class="age-check">
+  <h2>Are you 18 years or older?</h2>
+  <div style="margin-top: 15px;">
+    <button onclick="allowAccess()">Yes</button>
+    <button onclick="denyAccess()">No</button>
+  </div>
+</div>
+
+<div id="mainContent" class="hidden">
+
+  <header>
+    <h1>Karan Model</h1>
+  </header>
+
+  <section class="model-info">
+    <div class="model-photos">
+      <img src="photo1.jpg" alt="Karan Model Photo 1" />
+      <img src="photo2.jpg" alt="Karan Model Photo 2" />
+      <img src="photo3.jpg" alt="Karan Model Photo 3" />
+    </div>
+
+    <div class="comments">
+      <p>Karan is a classy and beautiful model with a special charm.</p>
+      <p>Her hot and attractive poses catch attention both indoors and outdoors.</p>
+      <p>Her professional behavior and sweetness bring her more fame.</p>
+      <p>Spending time with Karan is a delightful and memorable experience.</p>
+      <p>She is also adept in fitness and style, clearly visible in her photos and videos.</p>
+    </div>
+  </section>
+
+  <section class="booking-section">
+    <h2>Booking Options and Prices</h2>
+    <label for="bookingTime">Select Duration:</label>
+    <select id="bookingTime">
+      <option value="150_1h_discount">1 hour (discount price ₹150)</option>
+      <option value="250_1h_regular">After 1 hour (₹250)</option>
+      <option value="200_2h_discount">2 hours (discount price ₹200)</option>
+      <option value="300_2h_regular">After 2 hours (₹300)</option>
+      <option value="999_fullnight">Full night (₹999)</option>
+    </select>
+
+    <button onclick="bookNow()">Book Now</button>
+  </section>
+
+</div>
+
+<script>
+function allowAccess(){
+  document.getElementById('ageCheck').classList.add('hidden');
+  document.getElementById('mainContent').classList.remove('hidden');
+}
+function denyAccess(){
+  alert('You must be 18 years or older to access this page.');
+  window.location.href = "about:blank";
+}
+function bookNow(){
+  let select = document.getElementById('bookingTime');
+  let [price, desc] = select.value.split('_');
+  alert('Your booking duration: ' + desc + '\nTotal charge: ₹' + price);
+}
+</script>
+
+</body>
+</html>
